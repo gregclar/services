@@ -178,9 +178,11 @@ tasks.withType(Test) {
 
 bootJar.enabled = true
 
-assets {
-    packagePlugin = true
-}
+// NOTE: do not set assets.packagePlugin=true here - it is for library/plugin
+// projects and makes the build skip asset precompilation. Without
+// precompilation the war ships raw assets with no manifest, so in production
+// asset-pipeline serves everything with Cache-Control: no-cache and
+// ?compile=false URLs (see AssetPipelineFilter).
 
 asciidoctor {
     sourceDir = file("docs")

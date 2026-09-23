@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>${st.scheme()} <g:layoutTitle default="${st.pageTitle()}"/></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="${assetPath(src: 'gears.png')}?v=2.1">
+  <link rel="shortcut icon" href="${assetPath(src: 'gears.png')}">
 
   <meta name="description" content="${st.pageTitle()} biodiversity taxonomy services"/>
   <meta property="og:title" content="${st.pageTitle()}"/>
