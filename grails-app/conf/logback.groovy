@@ -1,6 +1,6 @@
 appender('STDOUT', ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
-        pattern = '%level %logger %message%n%xException'
+        pattern = 'rid:%X{rid} %level %logger %message%n%xException'
     }
 }
 appender("FILE", RollingFileAppender) {

@@ -16,6 +16,8 @@
 
 import au.org.biodiversity.nsl.ApiSessionStorageEvaluator
 import org.apache.shiro.mgt.DefaultSubjectDAO
+import au.org.biodiversity.nsl.RequestSequenceFilter
+import org.springframework.boot.web.servlet.FilterRegistrationBean
 
 // Place your Spring DSL code here
 beans = {
@@ -23,5 +25,14 @@ beans = {
 
     shiroSubjectDAO(DefaultSubjectDAO) { bean ->
         sessionStorageEvaluator = ref("shiroSessionStorageEvaluator")
+    }
+    // 1. Define your custom filter as a Spring bean
+    requestSequenceFilter(RequestSequenceFilter)
+
+    // 2. Register it with Tomcat so it intercepts incoming requests
+    requestSequenceFilterRegistration(FilterRegistrationBean) {
+        filter = ref('requestSequenceFilter')
+        urlPatterns = ['/*']  // Intercept every request
+        order = -100           // Runs early in the filter chain (before security/controllers)
     }
 }
